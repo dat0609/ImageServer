@@ -18,7 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 var env = builder.Environment.EnvironmentName;
 
 
-if (env == "Production")
+/*if (env == "Production")
 {
     var vaultName = builder.Configuration["KeyVault:Vault"];
     if (!string.IsNullOrEmpty(vaultName))
@@ -39,31 +39,31 @@ Log.Logger = new LoggerConfiguration().MinimumLevel.Override("Microsoft", LogEve
 #pragma warning disable CS0618
     .WriteTo.ApplicationInsights(TelemetryConfiguration.Active.InstrumentationKey, TelemetryConverter.Traces)
 #pragma warning restore CS0618
-    .CreateLogger();
+    .CreateLogger();*/
 
 try
 {
-    Log.Information("Starting up");
+    /*Log.Information("Starting up");
     // Full setup of serilog. We read log settings from appsettings.json
     builder.Host.UseSerilog((context, services, configuration) => configuration.ReadFrom
         .Configuration(context.Configuration).ReadFrom.Services(services).WriteTo.MSSqlServer(con,
             new MSSqlServerSinkOptions { TableName = "UserLogs"}, restrictedToMinimumLevel: LogEventLevel.Warning)
-        .Enrich.FromLogContext());
+        .Enrich.FromLogContext());*/
 
 
     const string managedNetworkingAppContextSwitch = "Switch.Microsoft.Data.SqlClient.UseManagedNetworkingOnWindows";
     AppContext.SetSwitch(managedNetworkingAppContextSwitch, true);
     // Add services to the container.
-    builder.Services.SetupDatabase(builder.Configuration);
-    builder.Services.SetupFirebaseAuth(builder.Configuration, builder.Environment);
-    builder.Services.SetupRepositories();
-    builder.Services.SetupHelper();
+    //builder.Services.SetupDatabase(builder.Configuration);
+    //builder.Services.SetupFirebaseAuth(builder.Configuration, builder.Environment);
+    //builder.Services.SetupRepositories();
+    //builder.Services.SetupHelper();
     builder.Services.SetupServices();
-    builder.Services.SetupThirdParty(builder.Configuration, env);
+    //builder.Services.SetupThirdParty(builder.Configuration, env);
     builder.Services.SetupSwagger(builder.Configuration);
-    builder.Services.SetUpHealthCheck(builder.Configuration);
+    /*builder.Services.SetUpHealthCheck(builder.Configuration);
     builder.Services.SetUpApplicationInsight(builder.Configuration);
-    builder.Services.SetUpSignalR(builder.Configuration, env);
+    builder.Services.SetUpSignalR(builder.Configuration, env);*/
 
     builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 
