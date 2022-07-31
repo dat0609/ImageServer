@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:51620",
+      "sslPort": 44377
+    }
+  },
+  "profiles": {
+    "CityDiscoverTourist.API": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:7235;http://localhost:5235",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "VaultUri": "https://citytouristserver.vault.azure.net/",
+        "AZURE_USERNAME": "ttnhi164096@ump.edu.vn"
+      }
+    },
+    "CityDiscoverTourist.API-Production": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:7235;http://localhost:5235",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production",
+        "VaultUri": "https://citytouristserver.vault.azure.net/",
+        "AZURE_USERNAME": "ttnhi164096@ump.edu.vn"
+      }
+    }
+  }
+}
