@@ -43,4 +43,4 @@ jobs:
         app-name: 'images'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_3e5428e838b64559a140f138bd07ed4e }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_06ccbd53b3324385a30e1c893dccaf16 }}/donephit/image:${{ github.sha }}'
+        images: donephit/image
