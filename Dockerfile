@@ -11,16 +11,16 @@ RUN apt-get update
 RUN apt-get -y install build-essential libgtk-3-dev libgstreamer1.0-dev libavcodec-dev libswscale-dev libavformat-dev libdc1394-22-dev libv4l-dev cmake-curses-gui ocl-icd-dev freeglut3-dev libgeotiff-dev
 
 WORKDIR /src
-COPY ["CityDiscoverTourist.API/CityDiscoverTourist.API.csproj", "CityDiscoverTourist.API/"]
-COPY ["CityDiscoverTourist.Business/CityDiscoverTourist.Business.csproj", "CityDiscoverTourist.Business/"]
-COPY ["CityDiscoverTourist.Data/CityDiscoverTourist.Data.csproj", "CityDiscoverTourist.Data/"]
-RUN dotnet restore "CityDiscoverTourist.API/CityDiscoverTourist.API.csproj"
+COPY ["CityDiscoverTourist.API/Image.API.csproj", "CityDiscoverTourist.API/"]
+COPY ["CityDiscoverTourist.Business/Image.Business.csproj", "CityDiscoverTourist.Business/"]
+COPY ["Image.Data/Image.Data.csproj", "Image.Data/"]
+RUN dotnet restore "CityDiscoverTourist.API/Image.API.csproj"
 COPY . .
 WORKDIR "/src/CityDiscoverTourist.API"
-RUN dotnet build "CityDiscoverTourist.API.csproj" -c Release -o /app/build
+RUN dotnet build "Image.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "CityDiscoverTourist.API.csproj" -c Release -o /app/publish
+RUN dotnet publish "Image.API.csproj" -c Release -o /app/publish
 
 FROM base AS final
 
@@ -34,4 +34,4 @@ COPY --from=publish /app/publish .
 
 
 
-ENTRYPOINT ["dotnet", "CityDiscoverTourist.API.dll"]
+ENTRYPOINT ["dotnet", "Image.API.dll"]
